@@ -1,24 +1,6 @@
 import "./App.css";
 import { useReducer } from "react";
-
-const INCREMENT = "INCREMENT";
-const RESET = "RESET";
-function counter(state, action) {
-  switch (action.type) {
-    case INCREMENT:
-      return state + action.amount;
-    case RESET:
-      return 0;
-    default:
-      return state;
-  }
-}
-function increment(amount) {
-  return { type: INCREMENT, amount };
-}
-function reset() {
-  return { type: RESET };
-}
+import { counter, increment, reset } from "./INCREMENT";
 
 function App() {
   const [count, dispatch] = useReducer(counter, 0);

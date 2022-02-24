@@ -1,22 +1,36 @@
 import "./App.css";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import { counter } from "./counter";
-import CounterRedux from "./CounterRedux";
-import CounterUserReducer from "./CounterUserReducer";
+import { useReducer } from "react";
 
-const store = createStore(counter, 0);
+const INCREMENT = "INCREMENT";
+const RESET = "RESET";
+function counter(state, action) {
+  switch (action.type) {
+    case INCREMENT:
+      return state + action.amount;
+    case RESET:
+      return 0;
+    default:
+      return state;
+  }
+}
+function increment(amount) {
+  return { type: INCREMENT, amount };
+}
+function reset() {
+  return { type: RESET };
+}
 
 function App() {
+  const [count, dispatch] = useReducer(counter, 0);
+
   return (
-    <Provider store={store}>
-      <>
-        <CounterRedux />
-        <CounterRedux />
-        <CounterUserReducer />
-        <CounterUserReducer />
-      </>
-    </Provider>
+    <>
+      <h1>COUNTER</h1>
+      <div>{count}</div>
+      <button onClick={() => dispatch(increment(+1))}>+1</button>
+      <button onClick={() => dispatch(increment(-1))}>-1</button>
+      <button onClick={() => dispatch(reset())}>reset</button>
+    </>
   );
 }
 

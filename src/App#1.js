@@ -1,7 +1,7 @@
 import "./App.css";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
-import { counter } from "./counter";
+import { counter } from "./counter#1";
 import CounterRedux from "./CounterRedux";
 import CounterUserReducer from "./CounterUserReducer";
 

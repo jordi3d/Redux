@@ -1,8 +1,8 @@
 import "./App.css";
 import { useReducer } from "react";
-import { counter, increment, reset } from "./INCREMENT";
+import { counter, increment, reset } from "./counter";
 
-function App() {
+export default function App() {
   const [count, dispatch] = useReducer(counter, 0);
 
   return (
@@ -15,5 +15,3 @@ function App() {
     </>
   );
 }
-
-export default App;
